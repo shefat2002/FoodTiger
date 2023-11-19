@@ -32,21 +32,18 @@
                     </tr>
 
                     <?php 
-                        //Get all the orders from database
+                        //SQL query to get all the orders from database
                         $sql = "SELECT * FROM tbl_order ORDER BY id DESC"; // DIsplay the Latest Order at First
-                        //Execute Query
                         $res = mysqli_query($conn, $sql);
                         //Count the Rows
                         $count = mysqli_num_rows($res);
 
-                        $sn = 1; //Create a Serial Number and set its initail value as 1
+                        $sn = 1;
 
                         if($count>0)
                         {
-                            //Order Available
                             while($row=mysqli_fetch_assoc($res))
                             {
-                                //Get all the order details
                                 $id = $row['id'];
                                 $food = $row['food'];
                                 $price = $row['price'];
@@ -107,8 +104,7 @@
                         }
                         else
                         {
-                            //Order not Available
-                            echo "<tr><td colspan='12' class='error'>Orders not Available</td></tr>";
+                            echo "<tr><td colspan='12' class='error'>No Order Available!</td></tr>";
                         }
                     ?>
 
